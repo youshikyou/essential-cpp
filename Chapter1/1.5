@@ -1,0 +1,45 @@
+#include <iostream>
+#include<string>
+
+
+using namespace std;
+
+
+int main()
+{
+	//C style;
+	const int name_size = 50;
+	char user_name[name_size];
+	cout << "please enter your name: ";
+	cin.getline(user_name,name_size);
+
+	if (strlen(user_name) > 2)
+	{
+		cout << "Hello, " << user_name
+			<< " good to see you!" << endl;
+	}
+	else
+	{
+		cout << "Not a valid name, goodbye" << endl;
+	}
+
+
+	//string style;
+
+	string user_name_1;
+	cout << "please enter your name: ";
+	getline(cin,user_name_1);
+
+	if (user_name_1.size() > 2)
+	{
+		cout << "Hello, " << user_name_1
+			<< " good to see you!" << endl;
+	}
+	else
+	{
+		cout << "Not a valid name, goodbye" << endl;
+	}
+	
+	return 0;
+
+}
