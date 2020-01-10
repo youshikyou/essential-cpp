@@ -1,0 +1,59 @@
+#include <iostream>
+#include<vector>
+#include<iterator>
+
+
+
+using namespace std;
+
+
+int main()
+{
+	const int num_size = 100;
+	int input_num;
+	int count = 0;
+	int count_arr = 0;
+	int array_num[num_size];
+	int sum_arr = 0;
+	int sum_vec = 0;
+	vector<int> vec_num;
+	
+	cout << "please enter a group of numbers: ";
+	while (cin.peek() != '\n'&&cin>>input_num&&count_arr<num_size)
+	{
+		if (count % 2 == 0)
+		{
+			array_num[count_arr] = input_num;
+			count_arr++;
+		}
+		else
+		{
+			vec_num.push_back( input_num);
+		}
+		count++;
+	}
+	
+	for (int i = 0; i < count_arr; i++)
+	{
+		sum_arr += array_num[i];
+	}
+
+	
+	for (vector<int>::iterator iter = vec_num.begin(); iter != vec_num.end(); ++iter)
+	{
+		sum_vec += *iter;
+	}
+
+	int *p_array_begin = begin(array_num);
+	int *p_array_end = end(array_num);
+	cout << "array sum: " << sum_arr
+		<< " " << "array average: " << sum_arr/count_arr  << endl;
+
+	cout << "vector sum: " << sum_vec
+		<< " " << "vector average: " << sum_vec/vec_num.size()<< endl;
+
+
+	
+	return 0;
+
+}
