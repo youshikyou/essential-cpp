@@ -55,6 +55,13 @@ int main()
 		cout << (*it) << ' ';
 	}
 
+	ofstream outfile_1;
+	outfile_1.open("sorted_content.txt");
+	for (vector<string>::iterator it = readcontent.begin(); it != readcontent.end(); ++it)
+	{
+		outfile_1 << (*it) << ' ';
+	}
+
 	return 0;
 
 }
