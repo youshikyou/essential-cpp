@@ -1,0 +1,60 @@
+#include <iostream>
+#include<string>
+#include<vector>
+#include<iterator>
+#include<algorithm>
+#include<fstream>
+
+
+using namespace std;
+
+
+int main()
+{
+	/*ofstream outfile;
+	outfile.open("test.txt");
+	string test_content;
+	cout << "please enter the content('#' to quit): ";
+	while (getline(cin,test_content)&&test_content!="#")
+	{
+		outfile << test_content << endl;
+	}
+	outfile.close();*/
+
+
+
+	ifstream infile;
+	infile.open("test.txt");
+
+	if (!infile.is_open())
+	{
+		cout << "could not open the file" << endl;
+		exit(EXIT_FAILURE);
+	}
+
+	vector<string> readcontent;
+	string word;
+	
+	infile >> word;
+	while (infile.good())
+	{
+		readcontent.push_back(word);
+		infile >> word;
+	}
+
+	for (vector<string>::iterator it = readcontent.begin(); it != readcontent.end(); ++it)
+	{
+		cout << (*it)<<' ';
+	}
+
+	sort(readcontent.begin(), readcontent.end());
+	cout << '\n' << "sorted words: ";
+
+	for (vector<string>::iterator it = readcontent.begin(); it != readcontent.end(); ++it)
+	{
+		cout << (*it) << ' ';
+	}
+
+	return 0;
+
+}
