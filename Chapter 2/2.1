@@ -1,0 +1,82 @@
+#include <iostream>
+
+
+
+using namespace std;
+
+bool fibon_elem(int pos, int &elem);
+bool print_sequence(int pos);
+
+int main()
+{
+	cout << "please enter a position(q to quit): ";
+	int pos;
+	int elem;
+	while (cin >> pos&&(cin.get()!='q'||cin.get()!='Q'))
+	{
+		if (fibon_elem(pos, elem))
+		{
+			print_sequence(pos);
+			cout << "please enter a postion again(q to quit): ";
+		}
+					
+	}
+	return 0;
+
+	
+
+}
+
+bool fibon_elem(int pos, int &elem)
+{
+	if (pos <= 0 || pos > 1024)
+	{
+		elem = 0;
+		return false;
+	}
+
+	elem = 1;
+	int n_1 = 1;
+	int n_2 = 1;
+
+	for (int x = 3; x <= pos; ++x)
+	{
+		elem = n_1 + n_2;
+		n_1 = n_2;
+		n_2 = elem;
+	}
+
+	return true;
+
+}
+
+bool print_sequence(int pos)
+{
+	if (pos <= 0 || pos > 1024)
+	{
+		cerr << "invalid postion: " << pos << "-- cannot handle request!\n";
+		return false;
+	}
+
+	cout << "The fibonacci for " << pos << " postion: \n\t";
+	switch (pos)
+	{
+		default:
+		case 2:
+			cout << "1 ";
+		case 1:
+			cout << "1 ";
+			break;
+	}
+	int elem;
+	int n_1 = 1;
+	int n_2 = 1;
+	for (int x = 3; x < pos; ++x)
+	{
+		elem = n_1 + n_2;
+		n_1 = n_2;
+		n_2 = elem;
+		cout << elem << ((x % 10) ? " " : "\n\t");
+	}
+	cout << endl;
+}
